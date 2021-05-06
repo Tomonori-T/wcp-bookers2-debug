@@ -1,8 +1,8 @@
 <div class='row'>
-  <div class='col-md-3'>
-    <h2>Follow Users</h2>
+  <div class='col-md-12'>
+    <h2>Follower Users</h2>
     <table class = "table">
-      <% if @user.followings.count == 0 %>
+      <% if @user.followers.count == 0 %>
         <td>ユーザーはいません</td>
       <% else %>
         <thead>
@@ -13,22 +13,22 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.followings.each do |follow| %>
+          <% @user.followers.each do |follow| %>
             <tr>
               <td>
-                <%= attachment_image_tag follow.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
+                <%= attachment_image_tag follow, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size:"50x50" %>
               </td>
               <td>
-                <%= follow.user.name %>
+                <%= follow.name %>
               </td>
               <td>
-                フォロー数: <%= follow.user.followings.count %>
+                フォロー数: <%= follow.followings.count %>
               </td>
               <td>
-                フォロワー数: <%= follow.user.followers.count %>
+                フォロワー数: <%= follow.followers.count %>
               </td>
               <td>
-                <%= link_to 'Show', user_path(follow.user), class: "user_#{follow.user.id}" %>
+                <%= link_to 'Show', user_path(follow), class: "user_#{follow.id}" %>
               </td>
             </tr>
           <% end %>
@@ -36,4 +36,4 @@
       <% end %>
     </table>
   </div>
-</div
+</div>
