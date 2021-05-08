@@ -30,6 +30,20 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
+  def self.looks(finders, words)
+  	if finders == "forward_match"
+      @users = User.where("name LIKE?","#{words}%")
+    elsif finders == "backward_match"
+      @users = User.where("name LIKE?","%#{words}")
+    elsif finders == "perfect_match"
+      @users = User.where("name LIKE?","#{words}")
+    elsif finders == "partial_match"
+      @users = User.where("name LIKE?","%#{words}%")
+    else
+      @users = User.all
+    end
+  end
+  
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: { maximum:50 }
