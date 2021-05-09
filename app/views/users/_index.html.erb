@@ -16,12 +16,12 @@
         <td>
         <% unless user == current_user %>
           <% if current_user.following?(user) %>
-            <%= link_to user_relationships_path(user), method: :delete do %>
+            <%= link_to user_relationships_path(user), method: :delete, remote: true do %>
               フォロー外す
             <% end %>
           <% else %>
             <%#= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
-            <%= link_to user_relationships_path(user), method: :post do %>
+            <%= link_to user_relationships_path(user), method: :post, remote: true do %>
               フォローする
             <% end %>
           <% end %>

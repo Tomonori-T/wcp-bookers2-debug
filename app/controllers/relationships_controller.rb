@@ -4,13 +4,13 @@ class RelationshipsController < ApplicationController
   def create
     following = current_user.follow(@user)
     #following.save
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
   end
 
   def destroy
     following = current_user.unfollow(@user)
     following.destroy
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
   end
 
   private

@@ -1,0 +1,2 @@
+$("#comments_buttons_<%= @comment.book.id%>").html("<%= j(render 'book_comments/book_comment', { books: @comment.book }) %>")
+$("textarea").val('')
