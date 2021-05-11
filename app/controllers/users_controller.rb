@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
-  
+
   def followings
     @user = User.find(params[:id])
   end
@@ -48,5 +48,5 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
+
 end
